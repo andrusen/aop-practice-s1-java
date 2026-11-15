@@ -1,30 +1,30 @@
 package homework.h05;
 
-// base
 // https://leetcode.com/problems/maximum-product-difference-between-two-pairs/
 public class T1 {
-    public int maxProductDifference(int[] nums) {
-        int max1 = 0, max2 = 0;
-        int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
 
-        for (int num : nums) {
-            // Оновлюємо два найбільші числа
-            if (num > max1) {
-                max2 = max1;
-                max1 = num;
-            } else if (num > max2) {
-                max2 = num;
-            }
+  public int maxProductDifference(int[] nums) {
+    int largest = 0;
+    int secondLargest = 0;
+    int smallest = Integer.MAX_VALUE;
+    int secondSmallest = Integer.MAX_VALUE;
 
-            // Оновлюємо два найменші числа
-            if (num < min1) {
-                min2 = min1;
-                min1 = num;
-            } else if (num < min2) {
-                min2 = num;
-            }
-        }
+    for (int num : nums) {
+      if (num > largest) {
+        secondLargest = largest;
+        largest = num;
+      } else if (num > secondLargest) {
+        secondLargest = num;
+      }
 
-        return (max1 * max2) - (min1 * min2);
+      if (num < smallest) {
+        secondSmallest = smallest;
+        smallest = num;
+      } else if (num < secondSmallest) {
+        secondSmallest = num;
+      }
     }
+
+    return largest * secondLargest - smallest * secondSmallest;
+  }
 }

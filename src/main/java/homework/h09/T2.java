@@ -1,20 +1,22 @@
 package homework.h09;
 
-// advanced
-// https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description/
+import java.util.ArrayList;
+import java.util.List;
 
+// https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/
 public class T2 {
-    public int numIdenticalPairs(int[] nums) {
-        int count = 0;
-        for (int i = 0; i < nums.length; i++){
 
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[i] == nums[j]) {
-                    count += 1;
-                }
-            }
-        }
-        return count;
+  public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+    int maxCandies = 0;
+    for (int candy : candies) {
+      maxCandies = Math.max(maxCandies, candy);
     }
 
+    List<Boolean> result = new ArrayList<>(candies.length);
+    for (int candy : candies) {
+      result.add(candy + extraCandies >= maxCandies);
+    }
+
+    return result;
+  }
 }

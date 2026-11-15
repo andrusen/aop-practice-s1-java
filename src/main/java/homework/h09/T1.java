@@ -1,26 +1,19 @@
 package homework.h09;
 
-// base
-// https://leetcode.com/problems/number-of-good-pairs/description/
-
-import java.util.ArrayList;
-import java.util.List;
-
+// https://leetcode.com/problems/number-of-good-pairs/
 public class T1 {
-    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
-        int maxCandies = 0;
-        for (int candy : candies) {
-            if (candy > maxCandies) {
-                maxCandies = candy;
-            }
-        }
 
-        List<Boolean> result = new ArrayList<>(candies.length);
-        for (int candy : candies) {
-            result.add(candy + extraCandies >= maxCandies);
-        }
+  public int numIdenticalPairs(int[] nums) {
+    int count = 0;
 
-        return result;
+    for (int i = 0; i < nums.length; i++) {
+      for (int j = i + 1; j < nums.length; j++) {
+        if (nums[i] == nums[j]) {
+          count++;
+        }
+      }
     }
 
+    return count;
+  }
 }

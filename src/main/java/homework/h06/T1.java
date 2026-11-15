@@ -1,28 +1,27 @@
 package homework.h06;
 
-// base
 // https://leetcode.com/problems/valid-anagram/
 public class T1 {
-    public boolean isAnagram(String s, String t) {
-        if (s.length() != t.length()) {
-            return false;
-        }
 
-        int[] charCounts = new int[26];
+  private static final int ALPHABET_SIZE = 26;
 
-        // Збільшуємо лічильник для символів з s і зменшуємо для t
-        for (int i = 0; i < s.length(); i++) {
-            charCounts[s.charAt(i) - 'a']++;
-            charCounts[t.charAt(i) - 'a']--;
-        }
-
-        // Якщо це анаграма, всі значення в масиві мають дорівнювати 0
-        for (int count : charCounts) {
-            if (count != 0) {
-                return false;
-            }
-        }
-
-        return true;
+  public boolean isAnagram(String source, String target) {
+    if (source.length() != target.length()) {
+      return false;
     }
+
+    int[] charCounts = new int[ALPHABET_SIZE];
+    for (int i = 0; i < source.length(); i++) {
+      charCounts[source.charAt(i) - 'a']++;
+      charCounts[target.charAt(i) - 'a']--;
+    }
+
+    for (int count : charCounts) {
+      if (count != 0) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }
